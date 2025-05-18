@@ -1,0 +1,9 @@
+{% if not kb_results %}
+Sorry, I couldn't find any relevant information.
+{% else %}
+Here’s what I found:
+{% for r in kb_results %}
+- {{ r.content }} (from {{ r.source }})
+{% endfor %}
+{% endif %}
+ 

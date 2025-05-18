@@ -1,0 +1,23 @@
+import json
+
+structured_kb = {
+    "menu": {
+        "Menu List _ Barbeque Nation": "5/12/25, 2:19 PM Menu List : Barbeque Nation ...",
+        "Menu and Drinks _ Barbeque Nation": "5/12/25, 2:20 PM Menu and Drinks : Barbeque Nation ..."
+    },
+    "bangalore": {
+        "Bangalore _ Bengaluru - Indiranagar _ Barbeque Nation": "...",
+        "Bangalore _ JP Nagar _ Barbeque Nation": "...",
+        "Bangalore _ Electronic City _ Barbeque Nation": "...",
+        "Bangalore _ Koramangala 1st Block _ Barbeque Nation": "..."
+    },
+    "delhi": {
+        "New Delhi - Connaught Place _ CP _ cp _ Barbeque Nation": "...",
+        "New Delhi - Unity Mall, Janakpuri _ Barbeque Nation": "...",
+        "New Delhi - Sector C, Vasant Kunj _ Barbeque Nation": "..."
+    }
+}
+with open("structured_kb.json", "w", encoding="utf-8") as f:
+    json.dump(structured_kb, f, ensure_ascii=False, indent=2)
+
+print("structured_kb.json has been saved!")

@@ -1,0 +1,8 @@
+{% if not name_collected %}
+Could you please provide your name?
+{% elif not phone_collected %}
+Can you please provide your 10 digit phone number, reciting it clearly without stopping?
+{% elif not confirmed %}
+So, {{ name }} your phone number is {{ formatted_phone }}, correct?
+{% endif %}
+ 

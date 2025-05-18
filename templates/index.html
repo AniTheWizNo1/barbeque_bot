@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barbeque Nation Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h2 {
+      color: #c0392b;
+    }
+    #chat {
+      border: 1px solid #ddd;
+      padding: 15px;
+      background: #fff;
+      height: 400px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+    }
+    input {
+      width: 70%;
+      padding: 10px;
+    }
+    button {
+      padding: 10px;
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>Welcome to Barbeque Nation Bot</h2>
+  <div id="chat"></div>
+  <input id="msg" placeholder="Type your message..." />
+  <button onclick="send()">Send</button>
+
+  <script>
+    const chat = document.getElementById("chat");
+
+    async function send() {
+      const input = document.getElementById("msg");
+      const message = input.value;
+      if (!message) return;
+
+      chat.innerHTML += `You: ${message}\n`;
+      input.value = "";
+
+      const res = await fetch("http://127.0.0.1:8000/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_input: message })
+      });
+
+      const data = await res.json();
+      chat.innerHTML += `Bot: ${data.response}\n\n`;
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+</body>
+</html>
